@@ -45,4 +45,27 @@
   // maker.fillCoffeeBeans(-50); //invalid
 
   console.log(maker);
+
+  class User {
+    get fullName(): string {
+      return `${this.firstName} ${this.lastName}`;
+    }
+    private internalAge = 4;
+    get age(): number {
+      return this.internalAge;
+    }
+    set age(num: number) {
+      if (num < 0) {
+        throw new Error("age cannot be 0 or smaller than 0");
+      }
+      this.internalAge = num;
+    }
+
+    constructor(private firstName: string, private lastName: string) {}
+  }
+
+  const user = new User("S Y", "H");
+  user.age = 28;
+  console.log(user);
+  console.log(user.fullName);
 }
